@@ -1,4 +1,6 @@
-# WEAJ - Wes, Elliot, Angel, and Josh:
+# vHarmony
+
+## WEAJ - Wes, Elliot, Angel, and Josh:
 
 ### Dependencies:
 Make sure you have these installed:
