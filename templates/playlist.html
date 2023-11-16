@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>CST 205 Playlist</title>
+      {{ bootstrap.load_css() }}
+  </head>
+<body>
+    <div class="container mb-4">  
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">{{ name }}'s Playlist! Add a song and artists.</h2>
+          <form method="POST" action="/">
+            {{ form.csrf_token }}
+            {{ form.song_title.label }} 
+            {{ form.song_title(size=32) }}
+            {{ form.artist.label }}
+            {{ form.artist(size=32) }}
+            <input type="submit" value="Submit">
+            <form method="POST" action="/">
+                
+            </form>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% for i in data %}
+  <div class="card">
+    <img src="{{i['url']}}" class="card-img-top rounded">
+    <div class="card-body">
+      <h5 class="card-title">{{i['title']}}</h5>
+      <p class="card-text">
+        {{i['explanation']}}
+      </p>
+    </div>
+  </div>
+{% endfor %}
+
+</body>
