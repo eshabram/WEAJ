@@ -4,7 +4,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
-import static.image_info as info
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -12,6 +11,14 @@ bootstrap = Bootstrap5(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/match')
+def match():
+    return render_template('match.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

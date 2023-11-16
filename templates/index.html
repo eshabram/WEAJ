@@ -3,15 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>vHarmony</title>
+    <!-- Include Flask-Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
 </head>
 <body>
-    {{ bootstrap.load_css() }}
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href='/'>Home</a>
+        <a class="navbar-brand" href='/about'>About</a>
+        <a class="navbar-brand" href='/match'>Match</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>vHarmony</h1>
+            <p>EVERY <b style="color: rgb(251, 162, 47);">14 MINUTES</b>, SOMEONE FINDS LOVE ON VHARMONY</p>
+        </div>
+    </section>
+
+    <section class="hero text-white text-center py-5">
+        <div class="container">
+            <a href='/match' class="btn btn-dark btn-lg">Get Matched</a>
+        </div>
+    </section>
+    <br><br>
+
+    <!-- Content Section -->
+    <div class="container text-center">
+        <image src="/static/images/hood-stradle.jpg" height="400px">
+        <br><br>
+
+        <p>"It was love at first sight" - Satisfied Customer</p>
+    </div>
+    <br><br><br>
+
+    <div class="container text-center">
+        <image src="/static/images/car-roses.jpg" height="400px">
+        <br><br>
+
+        <p>"I finally met my soulmate..." - vHarmony Customer</p>
+    </div>
+    <br><br><br>
+
+    <div class="container text-center">
+        <image src="/static/images/car-threesome.jpg" height="300px">
+        <br><br>
+
+        <p>"We found love on vHarmony" - Longtime vHarmony Users</p>
+    </div>
+    <br><br><br>
+
+    <div class="container text-center">
+        <image src="/static/images/car-hugger.jpg" height="400px">
+        <br><br>
+
+        <p>"I finally found serenety" - vHarmony Enthusiest</p>
+    </div>
+    <br><br><br>
+
+    <div class="container text-center">
+        <image src="/static/images/car-kisser.jpg" height="400px">
+        <br><br>
+
+        <p>"I found my wife on vHarmony" - That guy who married his Mustang</p>
+    </div>
+    <br><br><br>
+
+
+    <!-- Include Flask-Bootstrap JS -->
     {{ bootstrap.load_js() }}
-
-    <h1>vHarmony</h1>
-    <h2>Every 14 minutes, somebody finds love on vHarmoney</h2>
-
-    
 </body>
 </html>
