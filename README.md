@@ -10,6 +10,6 @@ pip3 install Bootstrap-Flask
 ### Run That Shit:
 To run the project you can simply run this command:
 ```
-flask run
+flask --debug run 
 ```
 

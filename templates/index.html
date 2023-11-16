@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <title>Page 3</title>
+</head>
 <body>
-    <h1>Page 2</h1>
+    {{ bootstrap.load_css() }}
+    {{ bootstrap.load_js() }}
 
-    <!-- templatexs/page3.html -->
-    {% if mood=="happy" %}
-    <p>yay</p>
-    {% else %}
-    <p>boo</p>
-    {% endif %}
+    <h1>Welcome to our website</h1>
 
-
+    
 </body>
 </html>
