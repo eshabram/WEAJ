@@ -35,6 +35,10 @@ def match():
 
     return render_template('match.html', image_url=image_url)
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
