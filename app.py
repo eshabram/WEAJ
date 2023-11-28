@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
+from image_query import query, Car
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -18,7 +19,22 @@ def about():
 
 @app.route('/match')
 def match():
-    return render_template('match.html')
+
+    while True:
+        # query until we find a match
+        tof, car_image = query()
+        if tof:
+            # car info
+            image_url = car_image.get_url()
+            type = car_image.get_type()
+            make = car_image.get_make()
+            color = car_image.get_color()
+            condition = car_image.get_condition()
+            print(f'{color}   {make} {type} in   "{condition}"   condition')
+            break
+
+    return render_template('match.html', image_url=image_url)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -9,17 +9,26 @@
 
     <!--navigation bar-->
     {% include 'navbar.html' %}
+    <!--Load css-->
+    <link rel="stylesheet" type="text/css" href="../static/css/match.css">
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>vHarmony</h1>
+            <p> <b style="color: rgb(251, 162, 47);">HIGHEST QUALITY</b> AUTOMOBILE POOL</p>
+        </div>
+    </section>
 
-        <!-- Hero Section -->
-        <section class="hero bg-primary text-white text-center py-5">
-            <div class="container">
-                <h1>vHarmony</h1>
-                <p> <b style="color: rgb(251, 162, 47);">HIGHEST QULITY</b> AUTOMOBILE POOL</p>
-            </div>
-        </section>
+    <!-- Image Container -->
+    <br><br>
+    <h3 style="text-align: center;">
+        Do you like this car?
+    </h3> <br><br>
 
-</head>
-<body>
+    <div class="image-container">
+        <img src="{{ image_url }}" class="centered-image">
+    </div>
+</body>
 </html>
