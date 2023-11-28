@@ -30,7 +30,7 @@ def match():
             make = car_image.get_make()
             color = car_image.get_color()
             condition = car_image.get_condition()
-            print(f'{color}   {make} {type} in   "{condition}"   condition')
+            print(f'{color.upper()}   {make.upper()} - {type.upper()} in   "{condition.upper()}"   condition')
             break
 
     return render_template('match.html', image_url=image_url)

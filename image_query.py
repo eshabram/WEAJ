@@ -69,7 +69,7 @@ def query():
     # Check if the request was successful
     if response.status_code == 200:
         data = response.json()
-        pprint(data)
+        # pprint(data)
 
         if 'hits' in data and data['hits']: # pixabay
             image = random.choice(data['hits'])
