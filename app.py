@@ -19,10 +19,15 @@ def about():
 
 @app.route('/match')
 def match():
+    # keep this false until before we turn it in.
+    first = False
 
     while True:
-        # query until we find a match
-        tof, car_image = query()
+        # query until we find a match. Google once, and then fall back on pixabay
+        if first:
+            tof, car_image = query('google')
+        else:
+            tof, car_image = query('')
         if tof:
             # car info
             image_url = car_image.get_url()
@@ -32,6 +37,7 @@ def match():
             condition = car_image.get_condition()
             print(f'{color.upper()}   {make.upper()} - {type.upper()} in   "{condition.upper()}"   condition')
             break
+        first = False
 
     return render_template('match.html', image_url=image_url)
 
