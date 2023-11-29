@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
-from image_query import query, Car
+from image_query import query, make_request, Car
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
