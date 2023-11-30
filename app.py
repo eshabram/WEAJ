@@ -35,7 +35,7 @@ def match():
             make = car_image.get_make()
             color = car_image.get_color()
             condition = car_image.get_condition()
-            print(f'{color.upper()}   {make.upper()} - {type.upper()} in   "{condition.upper()}"   condition')
+            print(f'color: {color.upper()}  Make:  {make.upper()} Type: {type.upper()} in   "{condition.upper()}"   condition')
             break
         first = False
 
