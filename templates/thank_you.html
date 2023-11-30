@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+</head>
+<body>
+    <h1>Thank you for taking the vHarmony survey!</h1>
+    <h2>Survey Responses:</h2>
+    <ul>
+        {% for response in responses %}
+            <li>
+                <strong>Name:</strong> {{ response['name'] }}<br>
+                <strong>Effectiveness Rating:</strong> {{ response['effectiveness_rating'] }}<br>
+                <strong>Recommendation:</strong> {{ response['recommend'] }}<br>
+                <strong>Age:</strong> {{ response['age'] }}<br>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
