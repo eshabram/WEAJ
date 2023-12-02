@@ -23,11 +23,13 @@
             {{ form.hidden_tag() }}
             <div class = "questions">
                 <label for="name">Name:</label>
-                <input type="text" name="username" required><br>
+                <input type="text" name="username" required>
+                <br>
                 <br>
 
                 <label for="effectiveness_rating">How effective was vHarmony for you on a scale of 1-5 (5 being very good):</label>
                     <select name="effectiveness_rating" required>
+                    <option value="-">-</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -39,6 +41,7 @@
                 
                 <label for = "age">What is your age range?</label>
                     <select name = "age">
+                        <option value="-">-</option>
                         <option value = "18-24">18-24</option>
                         <option value = "25-35">25-35</option>
                         <option value = "35-44">35-44</option>
@@ -50,11 +53,13 @@
 
                 <label for="recommend">Would you recommend vHarmony to a friend?</label>
                 <select name="recommend" required>
+                <option value="-">-</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
                 </select>
                 <br>
                 <br>
+                
                 <button type="submit" class="btn btn-primary" >Submit</button>
             </div>
         </form>
@@ -62,3 +67,7 @@
 
 </body>
 </html>
+
+
+<!-- switch to main, clone, pull, switch back to second_branch, verify it all works. Push to main -->
+<!-- Probably should descrepitvaly tell chatgpt my needs -->

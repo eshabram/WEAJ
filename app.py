@@ -27,9 +27,10 @@ def match():
 
 
 class SurveyForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired()])
+    name = StringField('Name', validators=[InputRequired()])
     car_choice = SelectField('Choose Your Dream Car', choices=[('tesla', 'Tesla'), ('ferrari', 'Ferrari'), ('bmw', 'BMW')], validators=[InputRequired()])
     effectiveness_rating = IntegerField('How effective was vHarmony for you? (1-10)', validators=[InputRequired()])
+    recommend = SelectField('Would you recommend vHarmony to a friend?', validators=[InputRequired()])
     
 @app.route('/survey', methods=['GET', 'POST'])
 def survey():
@@ -41,7 +42,6 @@ def survey():
             'effectiveness_rating': form.effectiveness_rating.data,
             'recommend': form.recommend.data,
             'age': form.age.data
-
         }
         survey_responses.append(response)
         return redirect(url_for('thank_you'))
