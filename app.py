@@ -7,6 +7,7 @@ from wtforms.validators import InputRequired
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
+from image_query import query, make_request, Car
 
 
 app = Flask(__name__)
@@ -23,7 +24,32 @@ def about():
 
 @app.route('/match')
 def match():
-    return render_template('match.html')
+    # keep this false until before we turn it in.
+    first = False
+
+    while True:
+        # query until we find a match. Google once, and then fall back on pixabay
+        if first:
+            tof, car_image = query('google')
+        else:
+            tof, car_image = query('')
+        if tof:
+            # car info
+            image_url = car_image.get_url()
+            type = car_image.get_type()
+            make = car_image.get_make()
+            color = car_image.get_color()
+            condition = car_image.get_condition()
+            print(f'color: {color.upper()}  Make:  {make.upper()} Type: {type.upper()} in   "{condition.upper()}"   condition')
+            break
+        first = False
+
+    return render_template('match.html', image_url=image_url)
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
 
 
 class SurveyForm(FlaskForm):

@@ -6,24 +6,29 @@
     <title>vHarmony</title>
     <!-- Include Flask-Bootstrap CSS -->
     {{ bootstrap.load_css() }}
+
+    <!--navigation bar-->
+    {% include 'navbar.html' %}
+    <!--Load css-->
+    <link rel="stylesheet" type="text/css" href="../static/css/match.css">
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>vHarmony</h1>
+            <p> <b style="color: rgb(251, 162, 47);">HIGHEST QUALITY</b> AUTOMOBILE POOL</p>
+        </div>
+    </section>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href='/'>Home</a>
-        <a class="navbar-brand" href='/about'>About</a>
-        <a class="navbar-brand" href='/match'>Match</a>
-    </nav>
+    <!-- Image Container -->
+    <br><br>
+    <h3 style="text-align: center;">
+        Do you like this car?
+    </h3> <br><br>
 
-        <!-- Hero Section -->
-        <section class="hero bg-primary text-white text-center py-5">
-            <div class="container">
-                <h1>vHarmony</h1>
-                <p> <b style="color: rgb(251, 162, 47);">HIGHEST QULITY</b> AUTOMOBILE POOL</p>
-            </div>
-        </section>
-
-</head>
-<body>
+    <div class="image-container">
+        <img src="{{ image_url }}" class="centered-image">
+    </div>
+</body>
 </html>
