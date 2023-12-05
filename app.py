@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -40,6 +40,20 @@ def match():
         first = False
 
     return render_template('match.html', image_url=image_url)
+
+@app.route('/match/like', methods=['POST'])
+def match_like():
+    image_url = request.form['image_url']
+    # Process the 'like' action here
+    print(f"Image {image_url} liked")
+    return redirect(url_for('match'))  # Redirect to the match page or another page
+
+@app.route('/match/dislike', methods=['POST'])
+def match_dislike():
+    image_url = request.form['image_url']
+    # Process the 'dislike' action here
+    print(f"Image {image_url} disliked")
+    return redirect(url_for('match'))  # Redirect to the match page or another page
 
 @app.route('/search')
 def search():
