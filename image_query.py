@@ -1,6 +1,13 @@
 import requests
 import random
 from pprint import pprint
+from collections import Counter
+
+# global lists so that the user's data does not get reset
+type_likes = []
+make_likes = []
+color_likes = []
+condition_likes = []
 
 # car object for storing query information.
 class Car():
@@ -91,6 +98,27 @@ def query(website):
     # build return object
     car = Car(type=type_random, make=make_random, color=color_random, condition=condition_random)
     return make_request(website, car)
+
+def like_data(type, make, color, cond):
+    type_likes.append(type)
+    make_likes.append(make)
+    color_likes.append(color)
+    condition_likes.append(cond)
+    print(type_likes)
+    print(make_likes)
+    print(color_likes)
+    print(condition_likes)
+    
+def result_data():
+    type_count = Counter(type_likes)
+    make_count = Counter(make_likes)
+    color_count = Counter(color_likes)
+    condition_count = Counter(condition_likes)
+    common_type = type_count.most_common(1)[0][0]
+    common_make = make_count.most_common(1)[0][0]
+    common_color = color_count.most_common(1)[0][0]
+    common_condition = condition_count.most_common(1)[0][0]
+    return (common_type, common_make, common_color, common_condition)
 
 if __name__ == "__main__":
     result = query()

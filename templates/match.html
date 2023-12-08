@@ -20,15 +20,25 @@
             <p> <b style="color: rgb(251, 162, 47);">HIGHEST QUALITY</b> AUTOMOBILE POOL</p>
         </div>
     </section>
+ <!-- Content Container -->
+    <div class="content-container">
+     <!-- Dislike Button -->
+        <form action="{{ url_for('match_dislike') }}" method="post" class="button-form">
+            <input type="hidden" name="image_url" value="{{ image_url }}">
+            <button type="submit" class="dislike-button">Dislike</button>
+        </form>
 
-    <!-- Image Container -->
-    <br><br>
-    <h3 style="text-align: center;">
-        Do you like this car?
-    </h3> <br><br>
+        <!-- Image Container -->
+        <div class="image-container">
+            <img src="{{ image_url }}" class="centered-image">
+        </div>
 
-    <div class="image-container">
-        <img src="{{ image_url }}" class="centered-image">
+          <!-- Like Button -->
+        <form action="{{ url_for('match_like', type=car_type, make=car_make, color=car_color, cond=car_cond) }}" method="post" class="button-form">
+            <input type="hidden" name="image_url" value="{{ image_url }}">
+            <button type="submit" class="like-button">Like</button>
+        </form>
+
     </div>
 </body>
 </html>
