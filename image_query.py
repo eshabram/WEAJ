@@ -85,8 +85,8 @@ def make_request(website, car):
     
 def query(website):
 
-    car_makes = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'BMW', 'Mercedes-Benz', 'Audi', 'Nissan', 'Hyundai', 'Tesla']
-    color_list = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'white', 'black', 'silver', 'gold']
+    car_makes = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'BMW', 'Mercedes-Benz', 'Audi', 'Nissan']
+    color_list = ['red', 'blue', 'green', 'yellow', 'orange', 'white', 'black', 'silver', 'gold']
     car_types = ['car', 'truck', 'van', 'SUV']
     conditions = ['new', 'used', 'old']
 
@@ -119,6 +119,12 @@ def result_data():
     common_color = color_count.most_common(1)[0][0]
     common_condition = condition_count.most_common(1)[0][0]
     return (common_type, common_make, common_color, common_condition)
+
+def clear_data():
+    type_likes.clear()
+    make_likes.clear()
+    color_likes.clear()
+    condition_likes.clear()
 
 if __name__ == "__main__":
     result = query()

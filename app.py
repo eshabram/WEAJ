@@ -4,24 +4,25 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
-from image_query import query, make_request, Car, like_data
+from image_query import *
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
 
 @app.route('/')
 def index():
+    clear_data()
     return render_template('index.html')
 
 @app.route('/about')
 def about():
+    clear_data()
     return render_template('about.html')
 
 @app.route('/match')
 def match():
     # keep this false until before we turn it in.
     first = False
-
     while True:
         # query until we find a match. Google once, and then fall back on pixabay
         if first:
@@ -35,14 +36,13 @@ def match():
             make = car_image.get_make()
             color = car_image.get_color()
             condition = car_image.get_condition()
-            print(f'color: {color.upper()}  Make:  {make.upper()} Type: {type.upper()} in   "{condition.upper()}"   condition')
-            # car_obj = (image_url, type, make, color, condition)
-            # match_like(car_obj)
-            # match_dislike(car_obj)
+            print(f'{type_likes} {make_likes} {color_likes} {condition_likes}')
+            print(f'{color.upper()} {make.upper()} {type.upper()} in {condition.upper()}" condition')
             break
         first = False
 
-    return render_template('match.html', image_url=image_url, car_type=type, car_make=make, car_color=color, car_cond=condition)
+    return render_template('match.html', image_url=image_url, car_type=type, \
+                           car_make=make, car_color=color, car_cond=condition)
 
 @app.route('/match/like/<type>/<make>/<color>/<cond>', methods=['POST'])
 def match_like(type, make, color, cond):
@@ -62,6 +62,7 @@ def match_dislike():
 
 @app.route('/search')
 def search():
+    clear_data()
     return render_template('search.html')
 
 
