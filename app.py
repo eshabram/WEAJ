@@ -57,6 +57,7 @@ class SurveyForm(FlaskForm):
     car_choice = SelectField('Choose Your Dream Car', choices=[('tesla', 'Tesla'), ('ferrari', 'Ferrari'), ('bmw', 'BMW')], validators=[InputRequired()])
     effectiveness_rating = IntegerField('How effective was vHarmony for you? (1-10)', validators=[InputRequired()])
     recommend = SelectField('Would you recommend vHarmony to a friend?', validators=[InputRequired()])
+    age = SelectField('What is your age range?', choices=[('-', '-'), ('18-24', '18-24'), ('25-35', '25-35'), ('35-44', '35-44'), ('45-65', '45-65'), ('65+', '65+')])
     
 @app.route('/survey', methods=['GET', 'POST'])
 def survey():
