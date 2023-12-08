@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vHarmony</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/survey.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href='/'>Home</a>
+        <a class="navbar-brand" href='/about'>About</a>
+        <a class="navbar-brand" href='/match'>Match</a>
+    </nav>
+
+    <!-- Centered Form Container -->
+    <div class="form-container">
+        <h1>Survey Form</h1>
+        <form method="post" action="{{ url_for('survey') }}">
+            {{ form.hidden_tag() }}
+            <div class = "questions">
+                <label for="name">Name:</label>
+                <input type="text" name="username" required>
+                <br>
+                <br>
+
+                <label for="effectiveness_rating">How effective was vHarmony for you on a scale of 1-5 (5 being very good):</label>
+                    <select name="effectiveness_rating" required>
+                    <option value="-">-</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    </select>
+                <br>
+                <br>
+                
+                <label for="age">What is your age range?</label>
+                <select name="age">
+                    <option value="-">-</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-35">25-35</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45-65">45-65</option>
+                    <option value="65+">65+</option>
+                </select>
+                <br>
+                <br>
+
+                <label for="recommend">Would you recommend vHarmony to a friend?</label>
+                <select name="recommend" required>
+                <option value="-">-</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                </select>
+                <br>
+                <br>
+
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+<!-- switch to main, clone, pull, switch back to second_branch, verify it all works. Push to main -->
+<!-- Probably should descrepitvaly tell chatgpt my needs -->

@@ -1,12 +1,17 @@
 from flask import Flask, render_template, flash, redirect, request, url_for
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
+import secrets
+from wtforms import StringField, SelectField, IntegerField
+from wtforms.validators import InputRequired
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
 from image_query import *
 
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = secrets.token_hex(16)
 bootstrap = Bootstrap5(app)
 
 @app.route('/')
@@ -64,6 +69,36 @@ def match_dislike():
 def search():
     clear_data()
     return render_template('search.html')
+
+
+
+class SurveyForm(FlaskForm):
+    name = StringField('Name', validators=[InputRequired()])
+    car_choice = SelectField('Choose Your Dream Car', choices=[('tesla', 'Tesla'), ('ferrari', 'Ferrari'), ('bmw', 'BMW')], validators=[InputRequired()])
+    effectiveness_rating = IntegerField('How effective was vHarmony for you? (1-10)', validators=[InputRequired()])
+    recommend = SelectField('Would you recommend vHarmony to a friend?', validators=[InputRequired()])
+    age = SelectField('What is your age range?', choices=[('-', '-'), ('18-24', '18-24'), ('25-35', '25-35'), ('35-44', '35-44'), ('45-65', '45-65'), ('65+', '65+')])
+    
+@app.route('/survey', methods=['GET', 'POST'])
+def survey():
+    form = SurveyForm()
+
+    if request.method == 'POST' and form.validate_on_submit():
+        response = {
+            'name': form.name.data,
+            'effectiveness_rating': form.effectiveness_rating.data,
+            'recommend': form.recommend.data,
+            'age': form.age.data
+        }
+        survey_responses.append(response)
+        return redirect(url_for('thank_you'))
+
+    return render_template('survey.html', form=form)
+
+
+@app.route('/thank_you')
+def thank_you():
+    return render_template('thank_you.html')
 
 
 if __name__ == '__main__':
