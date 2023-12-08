@@ -34,7 +34,7 @@
         </div>
 
           <!-- Like Button -->
-        <form action="{{ url_for('match_like') }}" method="post" class="button-form">
+        <form action="{{ url_for('match_like', type=car_type, make=car_make, color=car_color, cond=car_cond) }}" method="post" class="button-form">
             <input type="hidden" name="image_url" value="{{ image_url }}">
             <button type="submit" class="like-button">Like</button>
         </form>

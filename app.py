@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests, json
-from image_query import query, make_request, Car
+from image_query import query, make_request, Car, like_data
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -36,15 +36,19 @@ def match():
             color = car_image.get_color()
             condition = car_image.get_condition()
             print(f'color: {color.upper()}  Make:  {make.upper()} Type: {type.upper()} in   "{condition.upper()}"   condition')
+            # car_obj = (image_url, type, make, color, condition)
+            # match_like(car_obj)
+            # match_dislike(car_obj)
             break
         first = False
 
-    return render_template('match.html', image_url=image_url)
+    return render_template('match.html', image_url=image_url, car_type=type, car_make=make, car_color=color, car_cond=condition)
 
-@app.route('/match/like', methods=['POST'])
-def match_like():
+@app.route('/match/like/<type>/<make>/<color>/<cond>', methods=['POST'])
+def match_like(type, make, color, cond):
     image_url = request.form['image_url']
     # Process the 'like' action here
+    like_data(type, make, color, cond)
     print(f"Image {image_url} liked")
     return redirect(url_for('match'))  # Redirect to the match page or another page
 
@@ -52,6 +56,7 @@ def match_like():
 def match_dislike():
     image_url = request.form['image_url']
     # Process the 'dislike' action here
+    # we essentially don't have to do anything if the user dislikes
     print(f"Image {image_url} disliked")
     return redirect(url_for('match'))  # Redirect to the match page or another page
 
