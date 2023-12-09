@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You</title>
+    <title>Thank You Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f0f0f0; /* Set background color */
+        }
+
+        .thank-you {
+            font-size: 48px; /* Adjust font size as needed */
+            font-family: 'Satisfy', cursive; /* Specify the custom font */
+            text-align: center;
+            color: #333; /* Set text color */
+            text-transform: uppercase; /* Convert text to uppercase */
+            margin-top: 50vh; /* Adjust vertical position */
+            transform: translateY(-50%);
+        }
+    </style>
 </head>
 <body>
-    <h1>Thank you for taking the vHarmony survey!</h1>
-    <h2>Survey Responses:</h2>
-    <ul>
-        {% for response in responses %}
-            <li>
-                <strong>Name:</strong> {{ response['name'] }}<br>
-                <strong>Effectiveness Rating:</strong> {{ response['effectiveness_rating'] }}<br>
-                <strong>Recommendation:</strong> {{ response['recommend'] }}<br>
-                <strong>Age:</strong> {{ response['age'] }}<br>
+    <!-- Include your Bootstrap navbar -->
+    {% include 'navbar.html' %}
 
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container text-center">
+        <h1 class="thank-you">Thank You</h1>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

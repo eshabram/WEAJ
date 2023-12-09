@@ -1,3 +1,19 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; 
+}
+
+h1 {
+    font-size: 48px; 
+    font-family: 'Satisfy', cursive; 
+        text-align: center;
+    color: #333; 
+    text-transform: uppercase; 
+}
 /* Container for the image */
 .image-container {
     display: flex;
@@ -19,7 +35,7 @@
 }
 
 .button-form {
-    flex-basis: 100px; /* Adjust the width as needed */
+    flex-basis: 100px; 
     text-align: center;
 }
 .custom-bg {

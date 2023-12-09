@@ -9,6 +9,8 @@ make_likes = []
 color_likes = []
 condition_likes = []
 
+count = 0
+
 # car object for storing query information.
 class Car():
     def __init__(self, url='', type='', make='', color='', condition=''):
@@ -44,13 +46,17 @@ class Car():
     
 
 def make_request(website, car):
+    """ 
+    This is the function that makes the actual query. It can be given any parameters
+    so that it can be called in instances other than random.
+    """
     api_key = '40942229-12632621050d81131aeb8535b'
     google_api_key = ' AIzaSyCnaNHhVk7mCTB4r_V3ACbkOazY05B4uF4 '
     cse_id = '97ea8e86608a74b0a'
 
     fail_image = 'https://i.redd.it/this-guy-from-strange-addiction-who-is-in-love-with-his-car-v0-g1hxcgdio7i81.jpg?width=2340&format=pjpg&auto=webp&s=73551fc5611686f3aa6b71c83d10de77e2057a67'
 
-    query = f'{car.get_color()} {car.get_make()} {car.get_type()} {car.get_condition()}'
+    query = f'Vehicle - {car.get_color()} {car.get_make()} {car.get_type()} {car.get_condition()}'
 
     if website != 'google':
         # pixabay API query
@@ -84,6 +90,7 @@ def make_request(website, car):
         return False, car
     
 def query(website):
+    """ This is the function that randomly queries the search engines """
 
     car_makes = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'BMW', 'Mercedes-Benz', 'Audi', 'Nissan']
     color_list = ['red', 'blue', 'green', 'yellow', 'orange', 'white', 'black', 'silver', 'gold']
@@ -100,6 +107,8 @@ def query(website):
     return make_request(website, car)
 
 def like_data(type, make, color, cond):
+    """ This function adds the names of the liked attributes """
+    global count
     type_likes.append(type)
     make_likes.append(make)
     color_likes.append(color)
@@ -108,8 +117,11 @@ def like_data(type, make, color, cond):
     print(make_likes)
     print(color_likes)
     print(condition_likes)
+    count += 1
+    return count
     
 def result_data():
+    """ This function returns the names of the most common items ineach attribute list """
     type_count = Counter(type_likes)
     make_count = Counter(make_likes)
     color_count = Counter(color_likes)
@@ -120,11 +132,26 @@ def result_data():
     common_condition = condition_count.most_common(1)[0][0]
     return (common_type, common_make, common_color, common_condition)
 
+def enough_data():
+    """ This function determines when we are finished with mathing. """
+    thresh = 3
+    makes = Counter(make_likes)
+    colors = Counter(color_likes)
+    return makes.most_common(1)[0][1] >= thresh and colors.most_common(1)[0][1] >= thresh
+
 def clear_data():
+    """ This funcion ensures that the data is cleared """
+    global count 
+    count = 0
     type_likes.clear()
     make_likes.clear()
     color_likes.clear()
     condition_likes.clear()
+
+def increment_count():
+    """ just a little setter type function """
+    global count
+    count += 1
 
 if __name__ == "__main__":
     result = query()

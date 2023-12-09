@@ -1,3 +1,5 @@
+
+
 /* Container for the image */
 .image-container {
     display: flex;
@@ -22,9 +24,6 @@
     flex-basis: 100px; /* Adjust the width as needed */
     text-align: center;
 }
-.custom-bg {
-    background-color: #f946d2
-  }
 
 .like-button, .dislike-button {
     background-color: #d73cb5; /* Green background */
