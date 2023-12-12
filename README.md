@@ -11,7 +11,7 @@ Tello: https://trello.com/invite/b/KnZpSVfC/ATTIeb640bc36ae044f5892dca5d826e00ac
 
 Authors:
 - Elliot Shabram - Project Lead, Backend/Frontend Developer
-    - Created the structure and design, majority of the html templates and css, Querying of APIs, logic for random and final queries, and connected everything for the final release.
+    - Created the structure and design, majority of the html templates and css, Querying of APIs, logic for random and final queries, and connected everything for the final release. Also created the descision algorithm.
 - Joshua Rivera - Backend/Frontend Developer
     - Handled the data collection and processing. Created functions to find the most common items in the lists of collected data. Hooked up the functions to the liking mechanisms.
 - Angel Medina - Backend/Frontend Developer
