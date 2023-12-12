@@ -1,3 +1,16 @@
+"""
+Course: CST205 Multimedia Programming and Design
+Title: vHarmony
+Abstract: This script handles the querying and data collection and processing for the vHarmony website.
+
+Authors:
+- Elliot Shabram - Project Lead, Backend/Frontend Developer
+- Joshua Rivera - Backend/Frontend Developer
+- Angel Medina - Backend/Frontend Developer
+- Wessal Aman - Backend/Frontend Developer
+
+Date: 12/11/2023
+"""
 import requests
 import random
 from pprint import pprint
@@ -13,6 +26,10 @@ count = 0
 
 # car object for storing query information.
 class Car():
+    """
+    By Elliot Shabram
+    This is a custom object that helps us keep track of individual vehicle attributes. 
+    """
     def __init__(self, url='', type='', make='', color='', condition=''):
         self.url = url
         self.type = type
@@ -47,6 +64,7 @@ class Car():
 
 def make_request(website, car):
     """ 
+    By Elliot Shabram
     This is the function that makes the actual query. It can be given any parameters
     so that it can be called in instances other than random.
     """
@@ -90,7 +108,10 @@ def make_request(website, car):
         return False, car
     
 def query(website):
-    """ This is the function that randomly queries the search engines """
+    """ 
+    By Joshua Rivera
+    This is the function that randomly queries the search engines 
+    """
 
     car_makes = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'BMW', 'Mercedes-Benz', 'Audi', 'Nissan']
     color_list = ['red', 'blue', 'green', 'yellow', 'orange', 'white', 'black', 'silver', 'gold']
@@ -107,7 +128,10 @@ def query(website):
     return make_request(website, car)
 
 def like_data(type, make, color, cond):
-    """ This function adds the names of the liked attributes """
+    """ 
+    By Joshua Rivera
+    This function adds the names of the liked attributes 
+    """
     global count
     type_likes.append(type)
     make_likes.append(make)
@@ -121,7 +145,10 @@ def like_data(type, make, color, cond):
     return count
     
 def result_data():
-    """ This function returns the names of the most common items ineach attribute list """
+    """ 
+    By Joshua Rivera
+    This function returns the names of the most common items in each attribute list 
+    """
     type_count = Counter(type_likes)
     make_count = Counter(make_likes)
     color_count = Counter(color_likes)
@@ -133,14 +160,20 @@ def result_data():
     return (common_type, common_make, common_color, common_condition)
 
 def enough_data():
-    """ This function determines when we are finished with mathing. """
+    """ 
+    By Elliot Shabram
+    This function determines when we are finished with mathing.
+    """
     thresh = 3
     makes = Counter(make_likes)
     colors = Counter(color_likes)
     return makes.most_common(1)[0][1] >= thresh and colors.most_common(1)[0][1] >= thresh
 
 def clear_data():
-    """ This funcion ensures that the data is cleared """
+    """ 
+    By Elliot Shabram
+    This funcion ensures that the data is cleared 
+    """
     global count 
     count = 0
     type_likes.clear()
@@ -149,7 +182,10 @@ def clear_data():
     condition_likes.clear()
 
 def increment_count():
-    """ just a little setter type function """
+    """ 
+    By Elliot Shabram
+    Just a little setter type function 
+    """
     global count
     count += 1
 
