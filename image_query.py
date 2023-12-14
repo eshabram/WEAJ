@@ -164,7 +164,7 @@ def enough_data():
     By Elliot Shabram
     This function determines when we are finished with mathing.
     """
-    thresh = 3
+    thresh = 2
     makes = Counter(make_likes)
     colors = Counter(color_likes)
     return makes.most_common(1)[0][1] >= thresh and colors.most_common(1)[0][1] >= thresh
